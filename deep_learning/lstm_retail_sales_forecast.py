@@ -84,7 +84,6 @@ model.compile(
 
 model.summary()
 
-
 history = model.fit(
     X_train,
     y_train,
