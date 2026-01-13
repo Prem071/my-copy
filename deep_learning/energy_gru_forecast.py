@@ -64,6 +64,7 @@ X_scaled = scaler_X.fit_transform(
 
 y_scaled = scaler_y.fit_transform(df[["demand"]])
 
+#PREPARING THE DATA FOR THE RNNs Models - X - [X1,X2,X3,X4..] Y - [NEXT STEP]
 def create_sequences(X, y, window_size):
     X_seq, y_seq = [], []
     for i in range(len(X) - window_size):
@@ -130,7 +131,7 @@ predictions = scaler_y.inverse_transform(predictions)
 y_test_actual = scaler_y.inverse_transform(y_test)
 
 # ------------------------------------------------------------
-# 10. Plot Actual vs Predicted Demand
+# Plot Actual vs Predicted Demand
 # ------------------------------------------------------------
 plt.figure(figsize=(10, 4))
 plt.plot(y_test_actual, label="Actual Demand", marker="o")
@@ -143,7 +144,7 @@ plt.grid(True)
 plt.show()
 
 # ------------------------------------------------------------
-# 11. Predict Next Hour
+# Predict Next Hour
 # ------------------------------------------------------------
 last_24_hours = X_scaled[-WINDOW_SIZE:]
 last_24_hours = last_24_hours.reshape(1, WINDOW_SIZE, 1)

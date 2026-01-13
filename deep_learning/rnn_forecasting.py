@@ -22,9 +22,9 @@ df = pd.read_csv(
 df = df[['passengers']]
 print(df.head())
 
-WINDOW_SIZE = 12
+WINDOW_SIZE = 12 #INPUT SIZE
 
-scaler = MinMaxScaler(feature_range=(0, 1))
+scaler = MinMaxScaler(feature_range=(0, 1)) #Scaling is crucial for RNNs
 scaled_data = scaler.fit_transform(df)
 
 X, y = create_sequences(scaled_data, WINDOW_SIZE)
@@ -36,7 +36,7 @@ y_train, y_test = y[:train_size], y[train_size:]
 
 model = Sequential([
     SimpleRNN(
-        units=50,
+        units=50, #size of the hidden state vector
         activation="tanh",
         input_shape=(WINDOW_SIZE, 1) #12 Months'
     ),
