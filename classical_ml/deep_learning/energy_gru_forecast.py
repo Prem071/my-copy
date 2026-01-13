@@ -113,7 +113,6 @@ history = model.fit(
     verbose=1
 )
 
-
 plt.figure()
 plt.plot(history.history["loss"], label="Train Loss")
 plt.plot(history.history["val_loss"], label="Validation Loss")
